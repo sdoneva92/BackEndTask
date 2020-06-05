@@ -3,6 +3,7 @@ package PaymentTransactionTests;
 import Models.ErrorModel;
 import Models.SuccessResponseModel;
 import Steps.TransactionSteps;
+import org.assertj.core.api.BDDSoftAssertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Calendar;
@@ -10,7 +11,7 @@ import java.util.Date;
 
 public class PaymentTransactionTests {
 
-    //  BDDSoftAssertions softly = new BDDSoftAssertions();
+      BDDSoftAssertions softly = new BDDSoftAssertions();
 
     @Test
     public void validatePaymentSaleTransaction() {
@@ -31,9 +32,9 @@ public class PaymentTransactionTests {
 
         SuccessResponseModel voidSuccessResponseModel = steps.sendPostRequestForVoidTransaction(requestId, "void");
 
-//        softly.then(voidSuccessResponseModel.getStatus()).isEqualTo("approved");
-//        softly.then(voidSuccessResponseModel.getAmount()).isEqualTo(amount);
-//        softly.assertAll();
+        softly.then(voidSuccessResponseModel.getStatus()).isEqualTo("approved");
+        softly.then(voidSuccessResponseModel.getAmount()).isEqualTo(amount);
+        softly.assertAll();
     }
 
 

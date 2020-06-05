@@ -8,6 +8,7 @@ import Models.*;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
+import io.restassured.specification.FilterableRequestSpecification;
 import io.restassured.specification.RequestSpecification;
 
 import java.util.Date;
@@ -26,7 +27,7 @@ public class TransactionSteps {
 
         SalePaymentTrasactionModel salePaymentTrasactionModel = new SalePaymentTransactionFactory().createSaleTransaction(paymentTransactionModel);
 
-        RequestSpecification requestSpecification = RestAssured.given();
+        FilterableRequestSpecification requestSpecification = (FilterableRequestSpecification) RestAssured.given();
 
         requestSpecification.header("Authorization","Basic Y29kZW1vbnN0ZXI6bXk1ZWNyZXQta2V5Mm8ybw==");
         requestSpecification.body(salePaymentTrasactionModel);
